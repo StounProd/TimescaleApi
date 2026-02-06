@@ -1,0 +1,22 @@
+@TimescaleApi_HostAddress = http://localhost:5091
+
+### Загрузить CSV файл
+# POST {{TimescaleApi_HostAddress}}/api/import
+# Content-Type: multipart/form-data; boundary=----boundary
+# ------boundary
+# Content-Disposition: form-data; name="file"; filename="data.csv"
+# Content-Type: text/csv
+# < ./data.csv
+# ------boundary--
+
+### Получить результаты с фильтрами
+GET {{TimescaleApi_HostAddress}}/api/results?page=1&pageSize=50
+Accept: application/json
+
+###
+
+### Получить последние 10 значений по имени файла
+GET {{TimescaleApi_HostAddress}}/api/values/last10?fileName=data.csv
+Accept: application/json
+
+###
